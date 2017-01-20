@@ -66,8 +66,11 @@ export LD_LIBRARY_PATH=$KF5/usr/lib/$ARCH/qt5/libs:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=$KF5/usr/lib/$ARCH/pulseaudio:$LD_LIBRARY_PATH
 
 # Qt Modules
-export QT_PLUGIN_PATH=$KF5/usr/lib/$ARCH/qt5/plugins
+export QT_PLUGIN_PATH=$QT_PLUGIN_PATH:$SNAP/usr/lib/$ARCH/qt5/plugins
+export QT_PLUGIN_PATH=$QT_PLUGIN_PATH:$KF5/usr/lib/$ARCH/qt5/plugins
+export QML2_IMPORT_PATH=$QML2_IMPORT_PATH:$SNAP/usr/lib/$ARCH/qt5/qml
 export QML2_IMPORT_PATH=$QML2_IMPORT_PATH:$KF5/usr/lib/$ARCH/qt5/qml
+export QML2_IMPORT_PATH=$QML2_IMPORT_PATH:$SNAP/lib/$ARCH
 export QML2_IMPORT_PATH=$QML2_IMPORT_PATH:$KF5/lib/$ARCH
 
 # Removes Qt warning: Could not find a location
