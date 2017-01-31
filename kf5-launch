@@ -74,7 +74,7 @@ export QML2_IMPORT_PATH=$QML2_IMPORT_PATH:$SNAP/lib/$ARCH
 export QML2_IMPORT_PATH=$QML2_IMPORT_PATH:$KF5/lib/$ARCH
 
 # Qt Webengine
-export QTWEBENGINEPROCESS_PATH=$KF5/lib/$ARCH/qt5/libexec/QtWebEngineProcess
+export QTWEBENGINEPROCESS_PATH=$KF5/usr/lib/$ARCH/qt5/libexec/QtWebEngineProcess
 
 # Removes Qt warning: Could not find a location
 # of the system Compose files
