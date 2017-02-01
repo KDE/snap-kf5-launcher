@@ -11,6 +11,9 @@ fi
 KF5=$SNAP/kf5
 
 export PATH=$PATH:$KF5/usr/bin:$KF5/usr/sbin
+# https://bugs.launchpad.net/snapcraft/+bug/1661023
+# / in the snap is basically ubuntu-core.
+export PATH=$PATH:/usr/local/sbin:/usr/local/bin
 
 export LD_LIBRARY_PATH=$SNAP/usr/lib:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=$SNAP/usr/lib/$ARCH:$LD_LIBRARY_PATH
