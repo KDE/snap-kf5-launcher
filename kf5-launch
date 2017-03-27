@@ -10,6 +10,15 @@ fi
 
 KF5=$SNAP/kf5
 
+if [ ! -d $KF5/usr ] ; then
+  echo "You need to connect this snap to the kde-frameworks-5 snap."
+  echo ""
+  echo "You can do this with those commands:"
+  echo "snap install kde-frameworks-5"
+  echo "snap connect $SNAP_NAME:kde-frameworks-5-plug kde-frameworks-5:kde-frameworks-5-slot"
+  exit 1
+fi
+
 export PATH=$PATH:$KF5/usr/bin:$KF5/usr/sbin
 # https://bugs.launchpad.net/snapcraft/+bug/1661023
 # / in the snap is basically ubuntu-core.
