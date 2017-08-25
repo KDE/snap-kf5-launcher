@@ -44,6 +44,9 @@ export LD_LIBRARY_PATH=$LIBGL_DRIVERS_PATH:$LD_LIBRARY_PATH
 # https://bugs.launchpad.net/snappy/+bug/1588192
 export LD_LIBRARY_PATH=/var/lib/snapd/lib/gl:$LD_LIBRARY_PATH
 
+# Pulseaudio plugins
+export LD_LIBRARY_PATH=$KF5/usr/lib/$ARCH/pulseaudio:$LD_LIBRARY_PATH
+
 # XDG Config
 export XDG_CONFIG_DIRS=$KF5/etc/xdg:$SNAP/etc/xdg:$XDG_CONFIG_DIRS
 
@@ -80,7 +83,6 @@ export QT_SELECT=snappy-qt5
 
 # Qt Libs
 export LD_LIBRARY_PATH=$KF5/usr/lib/$ARCH/qt5/libs:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=$KF5/usr/lib/$ARCH/pulseaudio:$LD_LIBRARY_PATH
 
 # Qt Modules
 export QT_PLUGIN_PATH=$QT_PLUGIN_PATH:$SNAP/usr/lib/$ARCH/qt5/plugins
