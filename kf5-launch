@@ -79,7 +79,7 @@ ln -sf $KF5/usr/share/{fontconfig,fonts,fonts-*,themes} $XDG_DATA_HOME
 
 # Qt Platform to Mir
 export QTCHOOSER_NO_GLOBAL_DIR=1
-export QT_SELECT=snappy-qt5
+export QT_SELECT=5
 
 # Qt Libs
 export LD_LIBRARY_PATH=$KF5/usr/lib/$ARCH/qt5/libs:$LD_LIBRARY_PATH
