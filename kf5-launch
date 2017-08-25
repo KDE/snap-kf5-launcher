@@ -36,6 +36,14 @@ export XKB_CONFIG_ROOT=$KF5/usr/share/X11/xkb
 export LD_LIBRARY_PATH=$KF5/usr/lib/$ARCH/mesa:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=$KF5/usr/lib/$ARCH/mesa-egl:$LD_LIBRARY_PATH
 
+# libGL Drivers
+export LIBGL_DRIVERS_PATH=$KF5/usr/lib/$ARCH/dri
+export LD_LIBRARY_PATH=$LIBGL_DRIVERS_PATH:$LD_LIBRARY_PATH
+
+# Grab proprietary nvidia mount when possible.
+# https://bugs.launchpad.net/snappy/+bug/1588192
+export LD_LIBRARY_PATH=/var/lib/snapd/lib/gl:$LD_LIBRARY_PATH
+
 # XDG Config
 export XDG_CONFIG_DIRS=$KF5/etc/xdg:$SNAP/etc/xdg:$XDG_CONFIG_DIRS
 
@@ -46,9 +54,6 @@ export XDG_DATA_DIRS=$KF5/usr/local/share:$KF5/usr/share:$SNAP/usr/local/share:$
 # Font Config
 export FONTCONFIG_PATH=$KF5/etc/fonts/config.d
 export FONTCONFIG_FILE=$KF5/etc/fonts/fonts.conf
-
-# Tell libGL where to find the drivers
-export LIBGL_DRIVERS_PATH=$KF5/usr/lib/$ARCH/dri
 
 # Necessary for the SDK to find the translations directory
 export APP_DIR=$SNAP
