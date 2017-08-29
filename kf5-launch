@@ -113,8 +113,8 @@ export KDE_FORK_SLAVES=1
 export KF5_LIBEXEC_DIR=$KF5/usr/lib/$ARCH/libexec/kf5
 
 # Link icons into home so (xcursor) can find its cursor theme.
-mkdir -p $XDG_DATA_HOME/icons
-ln -s $KF5/usr/share/icons/* $XDG_DATA_HOME/icons/
+mkdir -p $HOME/.icons
+ln -s $KF5/usr/share/icons/* $HOME/.icons
 
 cd $SNAP
 exec "$@"
