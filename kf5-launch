@@ -112,5 +112,9 @@ export KDE_FORK_SLAVES=1
 ## FIXME: should be made a : separated list so we can look in $SNAP and $KF5!
 export KF5_LIBEXEC_DIR=$KF5/usr/lib/$ARCH/libexec/kf5
 
+# Link icons into home so (xcursor) can find its cursor theme.
+mkdir -p $XDG_DATA_HOME/icons
+ln -s $KF5/usr/share/icons/* $XDG_DATA_HOME/icons/
+
 cd $SNAP
 exec "$@"
