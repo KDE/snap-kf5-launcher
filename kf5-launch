@@ -62,16 +62,16 @@ export FONTCONFIG_FILE=$KF5/etc/fonts/fonts.conf
 export APP_DIR=$SNAP
 
 # Set XDG_DATA_HOME to local path, dependent on snap version
-export XDG_DATA_HOME=$SNAP_USER_DATA/.local-$SNAP_VERSION/share
+export XDG_DATA_HOME=$SNAP_USER_DATA/.local/share
 mkdir -p $XDG_DATA_HOME
 
-export XDG_CONFIG_HOME=$SNAP_USER_DATA/.local-$SNAP_VERSION/config
+export XDG_CONFIG_HOME=$SNAP_USER_DATA/.local/config
 mkdir -p $XDG_DATA_HOME
 
-export XDG_CACHE_HOME=$SNAP_USER_DATA/.cache-$SNAP_VERSION
+export XDG_CACHE_HOME=$SNAP_USER_DATA/.cache
 mkdir -p $XDG_CACHE_HOME
 
-export XDG_RUNTIME_DIR=$SNAP_USER_DATA/.local-$SNAP_VERSION/var/run/$UID
+export XDG_RUNTIME_DIR=$SNAP_USER_DATA/.local/var/run/$UID
 mkdir -p $XDG_RUNTIME_DIR
 
 # Not good, needed for fontconfig and themes
