@@ -102,10 +102,10 @@ export QTWEBENGINEPROCESS_PATH=$KF5/usr/lib/$ARCH/qt5/libexec/QtWebEngineProcess
 # of the system Compose files
 export QTCOMPOSE=$KF5/usr/share/X11/locale
 
-export DESKTOP_SESSION=/usr/share/xsessions/plasma
-export XDG_SESSION_DESKTOP=KDE
-export XDG_CURRENT_DESKTOP=KDE
-export QT_QPA_PLATFORMTHEME=kde
+export DESKTOP_SESSION=${DESKTOP_SESSION:-/usr/share/xsessions/plasma}
+export XDG_SESSION_DESKTOP=${XDG_SESSION_DESKTOP:-KDE}
+export XDG_CURRENT_DESKTOP=${XDG_CURRENT_DESKTOP:-KDE}
+export QT_QPA_PLATFORMTHEME=${QT_QPA_PLATFORMTHEME:-kde}
 export QT_XKB_CONFIG_ROOT=/usr/share/X11/xkb
 
 # KDE specific
