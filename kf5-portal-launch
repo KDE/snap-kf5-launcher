@@ -7,4 +7,4 @@ if [ "$QT_QPA_PLATFORMTHEME" != "" ]; then
 fi
 export QT_QPA_PLATFORMTHEME=flatpak
 
-exec ./kf5-launch "$@"
+exec $SNAP/kf5-launch "$@"
