@@ -54,10 +54,6 @@ export XDG_CONFIG_DIRS=$KF5/etc/xdg:$SNAP/etc/xdg:$XDG_CONFIG_DIRS
 # or fails to use $SNAP_USER_DATA if defined here
 export XDG_DATA_DIRS=$KF5/usr/local/share:$KF5/usr/share:$SNAP/usr/local/share:$SNAP/usr/share:$XDG_DATA_DIRS
 
-# Font Config
-export FONTCONFIG_PATH=$KF5/etc/fonts/config.d
-export FONTCONFIG_FILE=$KF5/etc/fonts/fonts.conf
-
 # Necessary for the SDK to find the translations directory
 export APP_DIR=$SNAP
 
@@ -74,8 +70,44 @@ mkdir -p $XDG_CACHE_HOME
 export XDG_RUNTIME_DIR=$SNAP_USER_DATA/.local/var/run/$UID
 mkdir -p $XDG_RUNTIME_DIR
 
-# Not good, needed for fontconfig and themes
-ln -sf $KF5/usr/share/{fontconfig,fonts,fonts-*,themes} $XDG_DATA_HOME
+# Font Config
+export FONTCONFIG_PATH=$KF5/etc/fonts/config.d
+export FONTCONFIG_FILE=$XDG_CONFIG_HOME/fontconfig/fonts.conf
+
+REALHOME=`getent passwd $UID | cut -d ':' -f 6`
+# Keep an array of data dirs, for looping through them
+IFS=':' read -r -a data_dirs_array <<< "$XDG_DATA_DIRS"
+
+function make_user_fontconfig {
+  echo "<fontconfig>"
+  if [ -d $REALHOME/.local/share/fonts ]; then
+    echo "  <dir>$REALHOME/.local/share/fonts</dir>"
+  fi
+  if [ -d $REALHOME/.fonts ]; then
+    echo "  <dir>$REALHOME/.fonts</dir>"
+  fi
+  for d in "${data_dirs_array[@]}"; do
+    if [ -d "$d/fonts" ]; then
+      echo "  <dir>$d/fonts</dir>"
+    fi
+  done
+  echo '  <include ignore_missing="yes">conf.d</include>'
+  # We need to include this default cachedir first so that caching
+  # works: without it, fontconfig will try to write to the real user home
+  # cachedir and be blocked by AppArmor.
+  echo '  <cachedir prefix="xdg">fontconfig</cachedir>'
+  if [ -d $REALHOME/.cache/fontconfig ]; then
+    echo "  <cachedir>$REALHOME/.cache/fontconfig</cachedir>"
+  fi
+  echo "</fontconfig>"
+}
+
+# This relies on the desktop, x11, or unity7 interface from what I can tell.
+# We'll configure the in-snap fontconfig to look in the outside resoruces,
+# the outside resources are made readable by the aforementioned interfaces.
+rm -rf $XDG_DATA_HOME/{fontconfig,fonts,fonts-*,themes,.themes}
+mkdir -p $XDG_CONFIG_HOME/fontconfig
+make_user_fontconfig > $FONTCONFIG_FILE
 
 # GStreamer
 export GST_PLUGIN_PATH_1_0=$SNAP/usr/lib/$ARCH/gstreamer-1.0/:$KF5/usr/lib/$ARCH/gstreamer-1.0/
