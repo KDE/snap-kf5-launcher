@@ -15,6 +15,7 @@ if [ ! -d $KF5/usr ] ; then
   echo ""
   echo "You can do this with those commands:"
   echo "snap install kde-frameworks-5"
+  echo "snap refresh kde-frameworks-5"
   echo "snap connect $SNAP_NAME:kde-frameworks-5-plug kde-frameworks-5:kde-frameworks-5-slot"
   exit 1
 fi
