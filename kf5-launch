@@ -129,8 +129,12 @@ export QT_SELECT=5
 export LD_LIBRARY_PATH=$KF5/usr/lib/$ARCH/qt5/libs:$LD_LIBRARY_PATH
 
 # Qt Modules
-export QT_PLUGIN_PATH=$QT_PLUGIN_PATH:$SNAP/usr/lib/$ARCH/qt5/plugins
-export QT_PLUGIN_PATH=$QT_PLUGIN_PATH:$KF5/usr/lib/$ARCH/qt5/plugins
+#
+# /usr/lib/arch/ is used for (e.g.) grantlee which uses a hardcoded path on top
+# of QT_PLUGIN_PATH (if it didn't have the hardcoded variant this wouldn't work
+# outside snaps either...
+export QT_PLUGIN_PATH=$QT_PLUGIN_PATH:$SNAP/usr/lib/$ARCH/qt5/plugins:$SNAP/usr/lib/$ARCH/
+export QT_PLUGIN_PATH=$QT_PLUGIN_PATH:$KF5/usr/lib/$ARCH/qt5/plugins:$KF5/usr/lib/$ARCH/
 export QML2_IMPORT_PATH=$QML2_IMPORT_PATH:$SNAP/usr/lib/$ARCH/qt5/qml
 export QML2_IMPORT_PATH=$QML2_IMPORT_PATH:$KF5/usr/lib/$ARCH/qt5/qml
 export QML2_IMPORT_PATH=$QML2_IMPORT_PATH:$SNAP/lib/$ARCH
