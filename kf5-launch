@@ -171,5 +171,17 @@ export KF5_LIBEXEC_DIR=$KF5/usr/lib/$ARCH/libexec/kf5
 mkdir -p $HOME/.icons
 ln -fs $KF5/usr/share/icons/* $HOME/.icons
 
+# This relies on qtbase patch
+# 0001-let-qlibraryinfo-fall-back-to-locate-qt.conf-via-XDG.patch
+# to make QLibraryInfo look in XDG_* locations for qt.conf. The paths configured
+# here are applied to everything that uses QLibraryInfo as final fallback and
+# has no XDG_* fallback before that. Currently the most interesting offender
+# is QtWebEngine which will not work unless the Data path is correctly set.
+cat << EOF > $XDG_CONFIG_HOME/qt.conf
+[Paths]
+Data = $KF5/usr/share/qt5/
+Translations = $KF5/usr/share/qt5/translations
+EOF
+
 cd $SNAP
 exec "$@"
