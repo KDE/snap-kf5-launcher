@@ -71,7 +71,7 @@ export XDG_DATA_HOME=$SNAP_USER_DATA/.local/share
 mkdir -p $XDG_DATA_HOME
 
 export XDG_CONFIG_HOME=$SNAP_USER_DATA/.local/config
-mkdir -p $XDG_DATA_HOME
+mkdir -p $XDG_CONFIG_HOME
 
 export XDG_CACHE_HOME=$SNAP_USER_DATA/.cache
 mkdir -p $XDG_CACHE_HOME
