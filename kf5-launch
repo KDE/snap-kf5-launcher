@@ -70,8 +70,15 @@ export APP_DIR=$SNAP
 export XDG_DATA_HOME=$SNAP_USER_DATA/.local/share
 mkdir -p $XDG_DATA_HOME
 
-export XDG_CONFIG_HOME=$SNAP_USER_DATA/.local/config
+export XDG_CONFIG_HOME=$SNAP_USER_DATA/.config
 mkdir -p $XDG_CONFIG_HOME
+
+if [ -e $SNAP_USER_DATA/.local/config/kdeglobals ]; then
+  # Migrate legacy path previously (incorrectly) used for configs.
+  # The current var $HOME/.config is in line with the XDG default.
+  cp -rv $SNAP_USER_DATA/.local/config/. $XDG_CONFIG_HOME
+  rm -rv $SNAP_USER_DATA/.local/config/
+fi
 
 export XDG_CACHE_HOME=$SNAP_USER_DATA/.cache
 mkdir -p $XDG_CACHE_HOME
