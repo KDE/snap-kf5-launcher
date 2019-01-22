@@ -28,7 +28,7 @@ if [ ! -d $KF5/usr ] ; then
   exit 1
 fi
 
-export PATH=$PATH:$KF5/usr/bin:$KF5/usr/sbin
+export PATH=$PATH:$SNAP/usr/bin:$SNAP/usr/sbin:$KF5/usr/bin:$KF5/usr/sbin
 # https://bugs.launchpad.net/snapcraft/+bug/1661023
 # / in the snap is basically ubuntu-core.
 export PATH=$PATH:/usr/local/sbin:/usr/local/bin
