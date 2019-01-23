@@ -64,6 +64,7 @@ export XDG_CONFIG_DIRS=$KF5/etc/xdg:$SNAP/etc/xdg:$XDG_CONFIG_DIRS
 export XDG_DATA_DIRS=$KF5/usr/local/share:$KF5/usr/share:$SNAP/usr/local/share:$SNAP/usr/share:$XDG_DATA_DIRS
 
 # Necessary for the SDK to find the translations directory
+# FIXME: do we (kde) really need this?
 export APP_DIR=$SNAP
 
 # Set XDG_DATA_HOME to local path, dependent on snap version
