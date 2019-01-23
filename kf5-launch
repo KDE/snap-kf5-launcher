@@ -56,18 +56,14 @@ export LD_LIBRARY_PATH=/var/lib/snapd/lib/gl:$LD_LIBRARY_PATH
 # Pulseaudio plugins
 export LD_LIBRARY_PATH=$KF5/usr/lib/$ARCH/pulseaudio:$LD_LIBRARY_PATH
 
-# XDG Config
-export XDG_CONFIG_DIRS=$KF5/etc/xdg:$SNAP/etc/xdg:$XDG_CONFIG_DIRS
-
-# Note: this doesn't seem to work, QML's LocalStorage either ignores
-# or fails to use $SNAP_USER_DATA if defined here
-export XDG_DATA_DIRS=$KF5/usr/local/share:$KF5/usr/share:$SNAP/usr/local/share:$SNAP/usr/share:$XDG_DATA_DIRS
-
 # Necessary for the SDK to find the translations directory
 # FIXME: do we (kde) really need this?
 export APP_DIR=$SNAP
 
-# Set XDG_DATA_HOME to local path, dependent on snap version
+export XDG_CONFIG_DIRS=$KF5/etc/xdg:$SNAP/etc/xdg:${XDG_CONFIG_DIRS:-/etc/xdg}
+
+export XDG_DATA_DIRS=$KF5/usr/local/share:$KF5/usr/share:$SNAP/usr/local/share:$SNAP/usr/share:${XDG_DATA_DIRS:-/usr/local/share:/usr/share}
+
 export XDG_DATA_HOME=$SNAP_USER_DATA/.local/share
 mkdir -p $XDG_DATA_HOME
 
