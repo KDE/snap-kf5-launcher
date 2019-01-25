@@ -151,10 +151,14 @@ export QTWEBENGINEPROCESS_PATH=$KF5/usr/lib/$ARCH/qt5/libexec/QtWebEngineProcess
 # of the system Compose files
 export QTCOMPOSE=$KF5/usr/share/X11/locale
 
+# FIXME: it's unclear if we actually need to force plasma theming, even without
+#   gtk integration theme Qt should probably figure out a sane style. Needs
+#   testing though.
 export DESKTOP_SESSION=${DESKTOP_SESSION:-/usr/share/xsessions/plasma}
 export XDG_SESSION_DESKTOP=${XDG_SESSION_DESKTOP:-KDE}
 export XDG_CURRENT_DESKTOP=${XDG_CURRENT_DESKTOP:-KDE}
 export QT_QPA_PLATFORMTHEME=${QT_QPA_PLATFORMTHEME:-kde}
+
 export QT_XKB_CONFIG_ROOT=/usr/share/X11/xkb
 
 # KDE specific
@@ -179,6 +183,15 @@ cat << EOF > $XDG_CONFIG_HOME/qt.conf
 Data = $KF5/usr/share/qt5/
 Translations = $KF5/usr/share/qt5/translations
 EOF
+
+# requires `locales, libc-bin` being stage-packages
+if [ -e $KF5/usr/share/i18n ]; then
+  export I18NPATH=$KF5/usr/share/i18n
+  locpath=$HOME/.locale-snap
+  mkdir -p $locpath
+  export LOCPATH=$locpath:/usr/lib/locale # core snap contains C.UTF-8 already
+  LC_ALL=C.UTF-8 $SNAP/kf5-locale-gen || exit 1
+fi
 
 cd $SNAP
 exec "$@"
