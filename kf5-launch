@@ -146,6 +146,7 @@ export QTWEBENGINEPROCESS_PATH=$KF5/usr/lib/$ARCH/qt5/libexec/QtWebEngineProcess
 # Removes Qt warning: Could not find a location
 # of the system Compose files
 export QTCOMPOSE=$KF5/usr/share/X11/locale
+export QT_XKB_CONFIG_ROOT=/usr/share/X11/xkb
 
 # FIXME: it's unclear if we actually need to force plasma theming, even without
 #   gtk integration theme Qt should probably figure out a sane style. Needs
@@ -155,7 +156,6 @@ export XDG_SESSION_DESKTOP=${XDG_SESSION_DESKTOP:-KDE}
 export XDG_CURRENT_DESKTOP=${XDG_CURRENT_DESKTOP:-KDE}
 export QT_QPA_PLATFORMTHEME=${QT_QPA_PLATFORMTHEME:-kde}
 
-export QT_XKB_CONFIG_ROOT=/usr/share/X11/xkb
 
 # KDE specific
 ## Do not start slaves through klauncher but fork them directly.
