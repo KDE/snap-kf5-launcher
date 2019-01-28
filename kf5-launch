@@ -156,7 +156,6 @@ export XDG_SESSION_DESKTOP=${XDG_SESSION_DESKTOP:-KDE}
 export XDG_CURRENT_DESKTOP=${XDG_CURRENT_DESKTOP:-KDE}
 export QT_QPA_PLATFORMTHEME=${QT_QPA_PLATFORMTHEME:-kde}
 
-
 # KDE specific
 ## Do not start slaves through klauncher but fork them directly.
 export KDE_FORK_SLAVES=1
