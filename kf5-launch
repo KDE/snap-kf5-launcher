@@ -151,6 +151,7 @@ export QT_XKB_CONFIG_ROOT=/usr/share/X11/xkb
 # FIXME: it's unclear if we actually need to force plasma theming, even without
 #   gtk integration theme Qt should probably figure out a sane style. Needs
 #   testing though.
+export KDE_FULL_SESSION=true
 export DESKTOP_SESSION=${DESKTOP_SESSION:-/usr/share/xsessions/plasma}
 export XDG_SESSION_DESKTOP=${XDG_SESSION_DESKTOP:-KDE}
 export XDG_CURRENT_DESKTOP=${XDG_CURRENT_DESKTOP:-KDE}
