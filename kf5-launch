@@ -28,6 +28,11 @@ if [ ! -d $KF5/usr ] ; then
   exit 1
 fi
 
+if [ -n "$KF5_SNAP_COMMON_HOME" ]; then
+  # https://forum.snapcraft.io/t/home-why-is-it-versioned/9708/2
+  export HOME=$SNAP_USER_COMMON
+fi
+
 export PATH=$PATH:$SNAP/usr/bin:$SNAP/usr/sbin:$KF5/usr/bin:$KF5/usr/sbin
 # https://bugs.launchpad.net/snapcraft/+bug/1661023
 # / in the snap is basically ubuntu-core.
