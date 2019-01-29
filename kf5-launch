@@ -198,7 +198,7 @@ EOF
 # requires `locales, libc-bin` being stage-packages
 if [ -e $KF5/usr/share/i18n ]; then
   export I18NPATH=$KF5/usr/share/i18n
-  locpath=$HOME/.locale-snap
+  locpath=$XDG_DATA_HOME/locale
   mkdir -p $locpath
   export LOCPATH=$locpath:/usr/lib/locale # core snap contains C.UTF-8 already
   LC_ALL=C.UTF-8 $SNAP/kf5-locale-gen || exit 1
