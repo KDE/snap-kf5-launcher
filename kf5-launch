@@ -10,7 +10,7 @@ fi
 
 KF5=$SNAP/kf5
 
-if [ ! -d $KF5/usr ] ; then
+if [ ! -d $KF5/usr ]; then
   source /etc/os-release
   runtime="kde-frameworks-5"
   slot="kde-frameworks-5:kde-frameworks-5-slot"
