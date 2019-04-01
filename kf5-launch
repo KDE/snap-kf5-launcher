@@ -9,6 +9,11 @@ else
 fi
 
 KF5=$SNAP/kf5
+if [ ! -d $KF5 ]; then
+  # This litters the paths a bit by essentially duplicating everything, but
+  # that seems simplest to have both kf5 and !kf5 work with the same code.
+  KF5=$SNAP
+fi
 
 if [ ! -d $KF5/usr ]; then
   source /etc/os-release
