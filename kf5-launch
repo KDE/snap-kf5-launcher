@@ -43,10 +43,10 @@ export PATH=$PATH:$SNAP/usr/bin:$SNAP/usr/sbin:$KF5/usr/bin:$KF5/usr/sbin
 # / in the snap is basically ubuntu-core.
 export PATH=$PATH:/usr/local/sbin:/usr/local/bin
 
-export LD_LIBRARY_PATH=$SNAP/lib:$SNAP/lib/$ARCH:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=$SNAP/usr/lib:$SNAP/usr/lib/$ARCH:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=$KF5/lib:$KF5/lib/$ARCH:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=$KF5/usr/lib:$KF5/usr/lib/$ARCH:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$SNAP/lib:$SNAP/lib/$ARCH:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$SNAP/usr/lib:$SNAP/usr/lib/$ARCH:$LD_LIBRARY_PATH
 
 # XKB config
 export XKB_CONFIG_ROOT=$KF5/usr/share/X11/xkb
@@ -70,9 +70,9 @@ export LD_LIBRARY_PATH=$KF5/usr/lib/$ARCH/pulseaudio:$LD_LIBRARY_PATH
 # FIXME: do we (kde) really need this?
 export APP_DIR=$SNAP
 
-export XDG_CONFIG_DIRS=$KF5/etc/xdg:$SNAP/etc/xdg:${XDG_CONFIG_DIRS:-/etc/xdg}
+export XDG_CONFIG_DIRS=$SNAP/etc/xdg:$KF5/etc/xdg:${XDG_CONFIG_DIRS:-/etc/xdg}
 
-export XDG_DATA_DIRS=$KF5/usr/local/share:$KF5/usr/share:$SNAP/usr/local/share:$SNAP/usr/share:${XDG_DATA_DIRS:-/usr/local/share:/usr/share}
+export XDG_DATA_DIRS=$SNAP/usr/local/share:$SNAP/usr/share:$KF5/usr/local/share:$KF5/usr/share:${XDG_DATA_DIRS:-/usr/local/share:/usr/share}
 
 export XDG_DATA_HOME=$SNAP_USER_DATA/.local/share
 mkdir -p $XDG_DATA_HOME
@@ -146,8 +146,8 @@ export LD_LIBRARY_PATH=$KF5/usr/lib/$ARCH/qt5/libs:$LD_LIBRARY_PATH
 export QT_PLUGIN_PATH=$QT_PLUGIN_PATH:$SNAP/usr/lib/$ARCH/qt5/plugins:$SNAP/usr/lib/$ARCH/
 export QT_PLUGIN_PATH=$QT_PLUGIN_PATH:$KF5/usr/lib/$ARCH/qt5/plugins:$KF5/usr/lib/$ARCH/
 export QML2_IMPORT_PATH=$QML2_IMPORT_PATH:$SNAP/usr/lib/$ARCH/qt5/qml
-export QML2_IMPORT_PATH=$QML2_IMPORT_PATH:$KF5/usr/lib/$ARCH/qt5/qml
 export QML2_IMPORT_PATH=$QML2_IMPORT_PATH:$SNAP/lib/$ARCH
+export QML2_IMPORT_PATH=$QML2_IMPORT_PATH:$KF5/usr/lib/$ARCH/qt5/qml
 export QML2_IMPORT_PATH=$QML2_IMPORT_PATH:$KF5/lib/$ARCH
 
 # Qt Webengine
