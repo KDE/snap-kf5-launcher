@@ -209,5 +209,4 @@ if [ -e $KF5/usr/share/i18n ]; then
   LC_ALL=C.UTF-8 $SNAP/kf5-locale-gen || exit 1
 fi
 
-cd $SNAP
 exec "$@"
