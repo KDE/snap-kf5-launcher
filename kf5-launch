@@ -38,7 +38,7 @@ if [ -n "$KF5_SNAP_COMMON_HOME" ]; then
   export HOME=$SNAP_USER_COMMON
 fi
 
-export PATH=$PATH:$SNAP/usr/bin:$SNAP/usr/sbin:$KF5/usr/bin:$KF5/usr/sbin:$KF5/usr/games
+export PATH=$PATH:$SNAP/usr/bin:$SNAP/usr/sbin:$SNAP/usr/games:$KF5/usr/bin:$KF5/usr/sbin:$KF5/usr/games
 # https://bugs.launchpad.net/snapcraft/+bug/1661023
 # / in the snap is basically ubuntu-core.
 export PATH=$PATH:/usr/local/sbin:/usr/local/bin
