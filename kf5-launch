@@ -76,6 +76,7 @@ export XDG_DATA_DIRS=$SNAP/usr/local/share:$SNAP/usr/share:$KF5/usr/local/share:
 
 export XDG_DATA_HOME=$SNAP_USER_DATA/.local/share
 mkdir -p $XDG_DATA_HOME
+chmod 7700 $XDG_DATA_HOME
 
 export XDG_CONFIG_HOME=$SNAP_USER_DATA/.config
 mkdir -p $XDG_CONFIG_HOME
