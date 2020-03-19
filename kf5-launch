@@ -20,8 +20,8 @@ if [ ! -d $KF5/usr ]; then
   runtime="kde-frameworks-5"
   slot="kde-frameworks-5:kde-frameworks-5-slot"
   if [ "$VERSION" == "18" ]; then
-    runtime="kde-frameworks-5-core18"
-    slot="kde-frameworks-5-core18:kde-frameworks-5-core18-slot"
+    runtime="kde-frameworks-5-qt-5-14-core18"
+    slot="kde-frameworks-5-qt-5-14-core18:kde-frameworks-5-qt-5-14-core18-slot"
   fi
 
   echo "You need to connect this snap to the $runtime snap."
