@@ -166,6 +166,15 @@ export KDE_FULL_SESSION=true
 export DESKTOP_SESSION=${DESKTOP_SESSION:-/usr/share/xsessions/plasma}
 export XDG_SESSION_DESKTOP=${XDG_SESSION_DESKTOP:-KDE}
 export XDG_CURRENT_DESKTOP=${XDG_CURRENT_DESKTOP:-KDE}
+if [[ -z "$QT_QPA_PLATFORMTHEME" ]]; then
+  gtk_based_desktops=("GNOME" "X-CINNAMON" "UNITY" "MATE" "XFCE" "LXDE" "Pantheon")
+  for gtk_desktop in "${gtk_based_desktops[@]}"; do
+    if [[ "$XDG_CURRENT_DESKTOP" == *"$gtk_desktop"* ]]; then
+      export QT_QPA_PLATFORMTHEME="gtk3"
+      break
+    fi
+  done
+fi
 export QT_QPA_PLATFORMTHEME=${QT_QPA_PLATFORMTHEME:-kde}
 
 # KDE specific
