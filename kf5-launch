@@ -15,28 +15,6 @@ if [ ! -d $KF5 ]; then
   KF5=$SNAP
 fi
 
-if [ ! -d $KF5/usr ]; then
-  source /etc/os-release
-  runtime="kde-frameworks-5"
-  slot="kde-frameworks-5:kde-frameworks-5-slot"
-  if [ "$VERSION" == "18" ]; then
-    runtime="kde-frameworks-5-qt-5-14-core18"
-    slot="kde-frameworks-5-qt-5-14-core18:kde-frameworks-5-qt-5-14-core18-slot"
-  fi
-  if [ "$VERSION" == "20" ]; then
-    runtime="kde-frameworks-5-qt-5-15-core20"
-    slot="kde-frameworks-5-qt-5-15-core20:kde-frameworks-5-qt-5-15-core20-slot"
-  fi
-
-  echo "You need to connect this snap to the $runtime snap."
-  echo ""
-  echo "You can do this with those commands:"
-  echo "snap install $runtime"
-  echo "snap refresh $runtime"
-  echo "snap connect $SNAP_NAME:kde-frameworks-5-plug $slot"
-  exit 1
-fi
-
 if [ -n "$KF5_SNAP_COMMON_HOME" ]; then
   # https://forum.snapcraft.io/t/home-why-is-it-versioned/9708/2
   export HOME=$SNAP_USER_COMMON
