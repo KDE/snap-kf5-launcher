@@ -182,8 +182,6 @@ fi
 export QT_QPA_PLATFORMTHEME=${QT_QPA_PLATFORMTHEME:-snap}
 
 # KDE specific
-## Do not start slaves through klauncher but fork them directly.
-export KDE_FORK_SLAVES=1
 ## Neon PATCH! make KIO look for slaves in a dynamic location depending on $SNAP
 ## FIXME: should be made a : separated list so we can look in $SNAP and $KF5!
 export KF5_LIBEXEC_DIR=$KF5/usr/lib/$ARCH/libexec/kf5
